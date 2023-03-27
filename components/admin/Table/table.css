@@ -1,0 +1,28 @@
+table {
+    @apply !min-w-full
+}
+
+table > tbody > tr {
+    @apply cursor-pointer
+}
+
+table > thead > tr > th,
+table > tbody > tr > td {
+    @apply !bg-white
+}
+
+table > thead > tr > th {
+    @apply text-left whitespace-nowrap
+    !p-4 !text-base !text-primary;
+}
+
+table > tbody > tr > td {
+    @apply text-left whitespace-nowrap
+    !border-y-2 !border-secondary-100
+    !px-4 !py-4 !text-base !text-secondary-500
+    sm:!py-6;
+}
+
+table > tbody > tr:nth-child( even ) > td {
+    @apply !bg-secondary-50
+}

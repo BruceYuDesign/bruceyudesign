@@ -1,0 +1,11 @@
+label {
+    @apply w-full text-white text-sm;
+}
+
+input,
+textarea,
+select {
+    @apply w-full p-2 text-slate-800 bg-slate-200 rounded
+    placeholder:text-slate-400
+    focus:outline-none;
+}

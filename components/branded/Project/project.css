@@ -1,0 +1,23 @@
+.project {
+    @apply h-full flex flex-col items-end bg-white rounded-2xl shadow-md overflow-hidden;
+}
+.project-head {
+    @apply w-full aspect-square rounded-2xl shadow overflow-hidden;
+    
+}
+.project-image {
+    @apply w-full h-full object-cover object-center;
+}
+.project-body {
+    @apply h-auto w-full p-4 flex flex-col gap-1;
+}
+.project-title {
+    @apply w-full text-2xl text-primary font-bold;
+}
+.project-subtitle {
+    @apply w-full text-lg text-secondary
+}
+.project-button {
+    @apply mt-auto mb-4 mr-4 px-4 py-1 w-fit font-bold border border-primary text-primary rounded-full transition
+    hover:bg-primary hover:text-white
+}

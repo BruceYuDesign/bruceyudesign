@@ -1,0 +1,11 @@
+label {
+    @apply w-full text-secondary-500 text-sm
+}
+
+input,
+textarea,
+select {
+    @apply w-full px-2 py-1 placeholder-secondary-300 bg-secondary-50 border-2 border-secondary-200 rounded transition
+    focus:outline-primary-300
+    disabled:cursor-not-allowed disabled:bg-secondary-200;
+}

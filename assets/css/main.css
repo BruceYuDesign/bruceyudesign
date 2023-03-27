@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "futura";
+    src: url( "/font/futura-medium-bt.ttf" );
+}
+
+body {
+    overflow: overlay;
+    @apply scroll-smooth;
+}
+
+img:not( [ src ] ),
+img[ src = "" ] {
+    @apply hidden;
+}
+p {
+    @apply text-base text-secondary-600 leading-loose
+}
+span {
+    @apply text-sm text-secondary-500
+}
+hr {
+    @apply border-slate-100 border w-full
+}
+::-webkit-scrollbar {
+    @apply w-[8px] h-[8px];
+}
+::-webkit-scrollbar-track {
+    @apply bg-opacity-0;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-400 bg-opacity-80 rounded-full
+    hover:bg-opacity-100;
+}
+
+@layer utilities {
+    .text-gradient {
+        @apply w-fit font-bold;
+        background: -webkit-linear-gradient( 70deg , #0c7edb 0% , #5ec1ff 60% );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .font-title {
+        @apply text-4xl text-center font-bold;
+    }
+    .font-desc {
+        @apply text-xl leading-loose;
+    }
+    .button-pill {
+        @apply w-fit px-6 py-1.5 font-bold text-white whitespace-nowrap rounded-full opacity-90 transition
+        hover:opacity-100;
+    }
+}
