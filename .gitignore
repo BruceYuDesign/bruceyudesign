@@ -8,4 +8,4 @@ node_modules
 .env
 ui-debug.log
 .DS_Store
-./sever/db/bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json
+server/db/bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json
