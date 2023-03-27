@@ -30,9 +30,9 @@
 ### 高級訪客登入
 若需要觀看更多內容，且不想被互踢，可與我聯絡，我再另外開帳號給您
 
-[bruceyudesign2021@gmail.com](bruceyudesign2021@gmail.com)
-
 高級訪客可以額外再看到「帳號權限設定、帳號管理」的頁面
+
+信箱：bruceyudesign2021@gmail.com
 
 ## 歷代作品
 可至我的[Repositories](https://github.com/BruceYuDesign?tab=repositories)觀看
