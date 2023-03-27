@@ -6,5 +6,6 @@ node_modules
 .output
 .firebase
 .env
-dist
+ui-debug.log
 .DS_Store
+/sever/db/bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json
