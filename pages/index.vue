@@ -176,7 +176,7 @@
                     <BrandedContactLink
                         label="github"
                         image="/contact/github.svg"
-                        href="https://github.com/BruceYuDesign/bruceyudesign"
+                        href="https://github.com/BruceYuDesign"
                         target="_blank"
                         />
                     <BrandedContactLink
