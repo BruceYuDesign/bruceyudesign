@@ -1,6 +1,6 @@
 # BRUCE YU DESIGN
 
-使用技術：
+## 使用技術：
 - Nuxt3
 - Vue3
 - tailwindcss
@@ -8,8 +8,7 @@
 - Firebase Functions
 - Firebase Hosting
 
-目前先上傳code至github已供參觀，後續會新增待處理以及待優化項目：
-
+## 待處理、待優化項目：
 1. 前台的前端與後端code優化，尚未做完善模組化
 2. 整體專案架構的說明文件
 3. 撰寫前台文案
