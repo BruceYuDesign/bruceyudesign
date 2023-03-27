@@ -4,6 +4,8 @@ node_modules
 .nitro
 .cache
 .output
+.firebase
 .env
 ui-debug.log
 .DS_Store
+./sever/db/bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json
