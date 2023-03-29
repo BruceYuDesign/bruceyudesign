@@ -41,8 +41,8 @@
                     <path d="M428.314,328.97676V293.92094l23.93745,25.04266V296.15344h4.95327v34.82179l-23.93745-24.979v22.98049Z" />
                 </g>
             </svg>
-            <span class="absolute font-bold text-lg text-slate-300 bottom-16">
-                v4.1.0
+            <span class="absolute font-bold text-lg text-slate-300 bottom-24">
+                v4.1.1
             </span>
         </div>
     </Transition>
