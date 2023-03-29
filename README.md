@@ -55,6 +55,7 @@ bruceyudesign
 - [ ] 上架專案作品
 - [ ] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error pag
 - [ ] 個行動裝置及瀏覽器的css相容性處理，現階段先建議使用電腦觀看
+- [ ] 改用後端套件發送email，目前emailjs暴露key在前端
 - [ ] 處理前台SEO
 
 ## 前台形象網站
@@ -80,5 +81,5 @@ bruceyudesign
 
 信箱：bruceyudesign2021@gmail.com
 
-## 歷代作品
+## 以前作品
 可至我的[Repositories](https://github.com/BruceYuDesign?tab=repositories)觀看
