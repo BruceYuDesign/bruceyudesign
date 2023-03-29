@@ -72,11 +72,11 @@
             :icons="[
                 { name: 'jquery' , src: '/service/icon/jquery.png' },
                 { name: 'vue' , src: '/service/icon/vue.png' },
+                { name: 'nuxt' , src: '/service/icon/nuxt.png' },
                 { name: 'tailwind' , src: '/service/icon/tailwind.png' },
                 { name: 'sass' , src: '/service/icon/sass.png' },
-                { name: 'd3' , src: '/service/icon/d3.png' },
                 { name: 'bootstrap' , src: '/service/icon/bootstrap.png' },
-                { name: 'dreamweaver' , src: '/service/icon/dreamweaver.png' }
+                { name: 'd3' , src: '/service/icon/d3.png' }
             ]"
             image="/service/web.jpg"
             />
