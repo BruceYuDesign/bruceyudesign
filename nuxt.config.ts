@@ -14,7 +14,7 @@ export default defineNuxtConfig({
         ]
     ],
     plugins: [
-        { src: '~/plugins/fetchData/index.js' }
+        { src: '~/plugins/fetchData.js' }
     ],
     lodash: {
         prefix: '_',
