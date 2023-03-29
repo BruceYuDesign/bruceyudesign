@@ -3,7 +3,7 @@
         <div class="modal-outline"
             v-if=" openModal "
             >
-            <dialog class="modal-mask"
+            <div class="modal-mask"
                 @click=" clickOverlay "
                 >
                 <div class="modal-container">
@@ -32,7 +32,7 @@
                         <slot name="foot"></slot>
                     </div>
                 </div>
-            </dialog>
+            </div>
         </div>
     </Transition>
 </template>
@@ -73,7 +73,7 @@
 <style scoped>
     .modal-outline {
         overflow: overlay;
-        @apply w-full h-full fixed top-0 right-0 bottom-0 left-0 grid place-items-start z-20;
+        @apply w-screen h-screen fixed top-0 right-0 bottom-0 left-0 grid place-items-start z-20;
     }
     .modal-mask {
         @apply w-full min-h-full h-fit py-12 px-0 grid place-items-center bg-black/75

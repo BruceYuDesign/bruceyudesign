@@ -42,7 +42,7 @@
                 </g>
             </svg>
             <span class="absolute font-bold text-lg text-slate-300 bottom-24">
-                v4.1.1
+                v4.1.2
             </span>
         </div>
     </Transition>
@@ -59,7 +59,7 @@
             if( !process.client ) { return }
             setTimeout( () => {
                 this.isLoading = false
-            } , 2000 )
+            } , 1500 )
         }
     }
 </script>

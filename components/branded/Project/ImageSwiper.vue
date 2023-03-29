@@ -68,7 +68,10 @@
 
 <style>
     .image-swiper {
-        @apply w-full h-full relative aspect-square rounded-2xl overflow-hidden;
+        @apply w-full h-full aspect-square relative;
+    }
+    .image-swiper .swiper {
+        @apply rounded-2xl overflow-hidden;
     }
 
     .image-swiper .swiper-slide {
