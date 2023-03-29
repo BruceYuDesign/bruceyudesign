@@ -5,7 +5,7 @@
         "headers": [
             {
                 "key": "Access-Control-Allow-Origin",
-                "value": "https://bruce-yu-design.web.app"
+                "value": "https://bruceyudesign.com"
             },
             {
                 "key": "Access-Control-Allow-Credentials",

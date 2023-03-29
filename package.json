@@ -1,11 +1,13 @@
 {
     "private": true,
     "scripts": {
-        "build": "nuxt build",
+        "build": "nuxt build && node ./firebaseEnv",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "postinstall": "nuxt prepare",
+        "preview-fb": "npx firebase emulators:start",
+        "deploy-fb": "npx firebase deploy"
     },
     "dependencies": {
         "@emailjs/browser": "^3.10.0",
