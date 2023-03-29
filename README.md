@@ -8,16 +8,55 @@
 - Firebase Functions
 - Firebase Hosting
 
-## 待處理、待優化項目：
-1. 前台的前端與後端code優化，尚未做完善模組化
-2. 整體專案架構的說明文件
-3. 撰寫前台文案
-4. 上架專案作品
-5. 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error pag
-6. 個行動裝置及瀏覽器的css相容性處理，現階段先建議使用電腦觀看
-7. 處理前台SEO
+## 專案結構：
+```
+bruceyudesign
+    |__assets
+    |__components
+    |   |__admin      // 後台組件
+    |   |__branded    // 前台組件
+    |   |__Welcom.vue // 首次加載組件
+    |
+    |__composables
+    |__layouts
+    |   |__admin.vue   // 後台佈局
+    |   |__blank.vue   // 空白佈局
+    |   |__branded.vue // 前台佈局
+    |
+    |__middleware // 前端中介 僅後台使用
+    |__pages
+    |__plugins
+    |__public
+    |__server
+    |   |__api
+    |   |__db // firebase firestore
+    |   |__middleware
+    |
+    |__stores // 使用pinia
+    |__verify // 前後端共用資料驗證
+    |__.firebaserc
+    |__.gitignore
+    |__.npmrc
+    |__app.vue
+    |__error.vue
+    |__firebase.json
+    |__firebaseEnv.js // 上傳firebase functions的環境設定
+    |__nuxt.config.ts
+    |__package-lock.json
+    |__package.json
+    |__README.md
+    |__tailwind.config.js
+    |__tsconfig.json
+```
 
-以上先列舉，後續會進行補充
+## 待處理、待優化項目：
+- [ ] 前台的前端code優化，尚未做完善模組化
+- [ ] 整體專案架構的說明文件
+- [ ] 撰寫前台文案
+- [ ] 上架專案作品
+- [ ] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error pag
+- [ ] 個行動裝置及瀏覽器的css相容性處理，現階段先建議使用電腦觀看
+- [ ] 處理前台SEO
 
 ## 前台形象網站
 [https://bruceyudesign.com](https://bruceyudesign.com)
