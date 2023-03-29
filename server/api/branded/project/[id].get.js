@@ -13,8 +13,8 @@ export default defineEventHandler( async event => {
     .then( response => {
 
         const projectType = response[ 0 ]
-        let project  = response[ 1 ]
-        let projects = response[ 2 ]
+        const project  = response[ 1 ]
+        const projects = response[ 2 ]
 
         if( !project ) {
             throw createError({
@@ -30,18 +30,15 @@ export default defineEventHandler( async event => {
             })
         }
 
-        for( let index in project.type ) {
-            for( let type of projectType ) {
-                project.type[ index ] = project.type[ index ].replace( type.id , type.text )
-            }
-        }
+        project.type = project.type.map( typeId => {
+            const type = projectType.find( ({ id }) => id === typeId )
+            return type ? type.text : typeId
+        })
 
-        projects = projects
-            .filter( data => data.id !== id )
-            .sort( ( a , b ) => a.date < b.date ? 1 : -1 )
-            .slice( 0 , 5 )
-
-        projects.map( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )
+        projects.filter( data => data.id !== id )
+        projects.sort( ( a , b ) => a.date < b.date ? 1 : -1 )
+        projects.splice( 5 )
+        projects.forEach( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )
 
         return {
             project: project,

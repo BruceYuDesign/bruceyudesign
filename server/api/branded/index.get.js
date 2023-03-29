@@ -10,14 +10,14 @@ export default defineEventHandler( async event => {
     ])
     .then( response => {
         const bannerOption = response[ 0 ]
-        let banners  = response[ 1 ]
-        let projects = response[ 2 ]
+        const banners  = response[ 1 ]
+        const projects = response[ 2 ]
 
         banners.sort( ( a , b ) => a.index > b.index ? 1 : -1 )
 
         projects.sort( ( a , b ) => a.date < b.date ? 1 : -1 )
-        projects = projects.slice( 0 , 5 )
-        projects.map( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )
+        projects.splice( 5 )
+        projects.forEach( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )
 
         return {
             bannerOption,
