@@ -42,7 +42,7 @@
                 </g>
             </svg>
             <span class="absolute font-bold text-lg text-slate-300 bottom-24">
-                v4.1.2
+                v4.1.3
             </span>
         </div>
     </Transition>

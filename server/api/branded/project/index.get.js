@@ -10,7 +10,7 @@ export default defineEventHandler( async event => {
         ...( type && { type: { operator: 'array-contains', value: type } } )
     }
 
-    const projects = await getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' ] , filters )
+    const projects = await getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' , 'date' ] , filters )
 
     // 頁碼
     const pageNow   = Number( page || 1 )

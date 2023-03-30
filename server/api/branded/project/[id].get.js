@@ -6,7 +6,7 @@ export default defineEventHandler( async event => {
     return Promise.all([
         getDatas( 'projectType' , [ 'index' , 'text' ] ),
         getData( 'project' , id , [ 'state' , 'title' , 'subtitle' , 'date' , 'desc' , 'linkName' , 'linkHref' , 'imgs' , 'type' ] ),
-        getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' ] , {
+        getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' , 'date' ] , {
             state: { operator: '==' , value: true }
         })
     ])
@@ -14,7 +14,7 @@ export default defineEventHandler( async event => {
 
         const projectType = response[ 0 ]
         const project  = response[ 1 ]
-        const projects = response[ 2 ]
+        const projects = response[ 2 ].filter( data => data.id !== id )
 
         if( !project ) {
             throw createError({
@@ -35,7 +35,6 @@ export default defineEventHandler( async event => {
             return type ? type.text : typeId
         })
 
-        projects.filter( data => data.id !== id )
         projects.sort( ( a , b ) => a.date < b.date ? 1 : -1 )
         projects.splice( 5 )
         projects.forEach( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )

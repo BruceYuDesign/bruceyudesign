@@ -4,7 +4,7 @@ export default defineEventHandler( async event => {
     return Promise.all([
         getData( 'bannerOption' , 'bannerOption' , [ 'timing' ] ),
         getDatas( 'banner' , [ 'use' , 'tool' , 'img' , 'gradient' , 'index' ] ),
-        getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' ] , {
+        getDatas( 'project' , [ 'title' , 'subtitle' , 'imgs' , 'date' ] , {
             state: { operator: '==' , value: true }
         })
     ])
