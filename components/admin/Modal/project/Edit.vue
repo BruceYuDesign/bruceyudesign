@@ -41,7 +41,7 @@
                         class="w-40 h-40 rounded"
                         accept-type="image/jpeg"
                         :can-delete=" false "
-                        :compress-quality=" 0.75 "
+                        :compress-quality=" 1 "
                         :compress-mimeType=" [ 'image/jpeg' ] "
                         :compress-height=" 800 "
                         :compress-width=" 800 "
