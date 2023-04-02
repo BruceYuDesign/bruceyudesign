@@ -1,5 +1,5 @@
 .project {
-    @apply h-full min-h-fit flex flex-col items-end bg-white rounded-2xl shadow-md overflow-hidden;
+    @apply h-full flex flex-col items-end bg-white rounded-2xl shadow-md overflow-hidden;
 }
 .project-head {
     @apply w-full aspect-square rounded-2xl shadow overflow-hidden;

@@ -1,10 +1,9 @@
 <template>
-    <BrandedContainer id="project"
-        class="min-h-screen"
-        >
+    <BrandedContainer id="project">
         <h2 class="text-gradient font-title">
             專案項目
         </h2>
+        <!-- 類別切換 -->
         <div class="max-w-full flex flex-row pb-2 overflow-auto">
             <div class="w-fit flex flex-row gap-4 px-4"
                 :class=" isLoading && 'pointer-events-none' "
@@ -27,8 +26,9 @@
                 </NuxtLink>
             </div>
         </div>
+        <!-- Project -->
         <div v-if=" !isLoading "
-            class="w-full h-auto grid grid-cols-1 gap-8
+            class="w-full grid grid-cols-1 auto-rows-max gap-8
             sm:grid-cols-2
             xl:grid-cols-3 xl:gap-12"
             >
@@ -38,8 +38,9 @@
                 :project=" project "
                 />
         </div>
+        <!-- Skeleton -->
         <div v-else
-            class="w-full h-auto grid grid-cols-1 gap-8
+            class="w-full grid grid-cols-1 auto-rows-max gap-8
             sm:grid-cols-2
             xl:grid-cols-3 xl:gap-12"
             >
@@ -47,6 +48,7 @@
             <BrandedProjectSkeleton/>
             <BrandedProjectSkeleton/>
         </div>
+        <!-- Pages -->
         <div class="flex flex-row items-center gap-4 bg-slate-600 p-2 rounded-full shadow-md"
             :class=" isLoading && 'pointer-events-none' "
             >
