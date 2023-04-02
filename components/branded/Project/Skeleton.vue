@@ -1,8 +1,6 @@
 <template>
     <div class="project">
-        <div class="project-head">
-            <div class="project-image project-skeleton"></div>
-        </div>
+        <div class="project-head project-skeleton"></div>
         <div class="project-body">
             <div class="project-title project-skeleton"></div>
             <div class="project-subtitle project-skeleton"></div>
