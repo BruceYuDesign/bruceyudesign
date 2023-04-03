@@ -1,11 +1,6 @@
+import { v4 as createToken } from 'uuid'
 import { getDatas , updateData } from '~/server/db'
 import bcrypt from 'bcrypt'
-
-// token產生器
-function createToken() {
-    const rand = () => Math.random().toString( 36 ).substr( 2 )
-    return rand() + rand()
-}
 
 export default defineEventHandler( async event => {
     const { data } = await readBody( event )
@@ -61,8 +56,6 @@ export default defineEventHandler( async event => {
         token: tokenEncrypt
     })
     setCookie( event , '__session' , __session  , option )
-    // setCookie( event , 'uid'   , user.id      , option )
-    // setCookie( event , 'token' , tokenEncrypt , option )
 
     // token寫入資料庫
     await updateData( 'user' , user.id , {

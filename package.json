@@ -32,6 +32,7 @@
         "nuxt-lodash": "^2.4.1",
         "pinia": "^2.0.32",
         "swiper": "^9.1.0",
+        "uuid": "^9.0.0",
         "vue": "^3.2.45",
         "vue-apexcharts": "^1.6.2",
         "vue-router": "^4.1.6",
