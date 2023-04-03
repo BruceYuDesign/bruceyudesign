@@ -53,9 +53,9 @@ bruceyudesign
 - [ ] 前台的前端code優化，尚未做完善模組化
 - [ ] 撰寫前台文案
 - [ ] 上架專案作品
-- [ ] 使用storage存放圖片，目前使用base64存在firestore
+- [x] 使用storage存放圖片，目前使用base64存在firestore
 - [ ] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error pag
-- [X] 各行動裝置及瀏覽器的css相容性處理，現階段先建議使用電腦觀看
+- [x] 各行動裝置及瀏覽器的css相容性處理，現階段先建議使用電腦觀看
 - [ ] 改用後端套件發送email，目前emailjs暴露key在前端
 - [ ] 處理前台SEO
 
