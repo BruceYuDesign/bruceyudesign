@@ -39,7 +39,7 @@
                 :can-edit=" true "
                 :can-delete=" true "
                 suggestion="（建議尺寸：600 x 600）"
-                :compress-quality=" 0.8 "
+                :compress-quality=" 1 "
                 :compress-mime-type=" [ 'image/png' ] "
                 :compress-height=" 600 "
                 :compress-width=" 600 "
