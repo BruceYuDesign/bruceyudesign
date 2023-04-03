@@ -8,8 +8,6 @@ export default eventHandler( async event => {
     }
 
     // 尚未登入 --------------------------------------------------
-    // const cookieToken = getCookie( event , 'token' )
-    // const cookieUid   = getCookie( event , 'uid' )
     const __session = getCookie( event , '__session' )
     if( !__session ) {
         throw createError({
@@ -29,8 +27,6 @@ export default eventHandler( async event => {
         userAccess = await getData( 'userAccess' , user.access , [ 'access' ] )
     }
     catch {
-        // deleteCookie( event , 'token' )
-        // deleteCookie( event , 'uid' )
         deleteCookie( event , '__session' )
         throw createError({
             statusCode: 401,
@@ -42,8 +38,6 @@ export default eventHandler( async event => {
     const { state } = user
     // 帳號被停用
     if( !state ) {
-        // deleteCookie( event , 'token' )
-        // deleteCookie( event , 'uid' )
         deleteCookie( event , '__session' )
         throw createError({
             statusCode: 403,
@@ -58,8 +52,6 @@ export default eventHandler( async event => {
     const isNotExpired = new Date( tokenExp ) >= new Date( Date.now() )
     // token 錯誤
     if( !isTokenValid || !isNotExpired ) {
-        // deleteCookie( event , 'token' )
-        // deleteCookie( event , 'uid' )
         deleteCookie( event , '__session' )
         throw createError({
             statusCode: 401,
@@ -78,8 +70,6 @@ export default eventHandler( async event => {
     const apiMethod = event.node.req.method.toLowerCase()
     // access 不足
     if( !access[ apiPath ][ apiMethod ] ) {
-        // deleteCookie( event , 'token' )
-        // deleteCookie( event , 'uid' )
         deleteCookie( event , '__session' )
         throw createError({
             statusCode: 403,
