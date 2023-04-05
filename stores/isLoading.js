@@ -5,9 +5,9 @@ export const useLoadStore = defineStore( 'load' , {
         }
     },
     actions: {
-        setLoading( boolean ) {
+        setLoading( state ) {
             if( !process.client ) { return }
-            if( boolean ) {
+            if( state ) {
                 this.isLoading = true
                 document.body.style.overflow = 'hidden'
             }
