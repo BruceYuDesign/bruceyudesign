@@ -5,9 +5,11 @@ export default defineEventHandler( async event => {
 
     // 刪除圖片
     const { imgs } = await getData( 'project' , id , [ 'imgs' ] )
-    for( let { src } of imgs ) {
-        await deleteImage( src , 'project' )
-    }
+    await Promise.all(
+        imgs.map( async ({ src }) => 
+            await deleteImage( src , 'project' )
+        )
+    )
 
     // 刪除資料
     return deleteData( 'project' , id )

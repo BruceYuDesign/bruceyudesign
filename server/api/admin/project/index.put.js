@@ -14,18 +14,20 @@ export default defineEventHandler( async event => {
 
     // 刪除已棄用圖片
     const { imgs: oldProjectImgs } = await getData( 'project' , id , [ 'imgs' ] )
-    oldProjectImgs.forEach( async ({ src: oldImgSrc }) => {
-        const isExist = data.imgs.some( ({ src: newImgSrc }) => oldImgSrc === newImgSrc )
-        if( !isExist ) {
-            await deleteImage( oldImgSrc )
-        }
-    })
+    await Promise.all(
+        oldProjectImgs.map( async ({ src: oldImgSrc }) => {
+            const isExist = data.imgs.some( ({ src: newImgSrc }) => oldImgSrc === newImgSrc )
+            isExist || await deleteImage( oldImgSrc )
+        })
+    )
 
     // 更新圖片
-    for( let index in data.imgs ) {
-        const imgSrc = await updateImage( data.imgs[ index ].src , 'project' )
-        data.imgs[ index ].src = imgSrc
-    }
+    await Promise.all(
+        data.imgs.map( async ( element , index ) => {
+            const imgSrc = await updateImage( data.imgs[ index ].src , 'project' )
+            data.imgs[ index ].src = imgSrc
+        })
+    )
 
     // 更新資料
     return updateData( 'project' , id , {

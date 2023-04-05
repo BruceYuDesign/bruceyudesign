@@ -11,11 +11,12 @@ export default defineEventHandler( async event => {
         })
     ])
     .then( response => {
-
         const projectType = response[ 0 ]
         const project  = response[ 1 ]
+        // 更多文章，排除自身
         const projects = response[ 2 ].filter( data => data.id !== id )
 
+        // 未有該project
         if( !project ) {
             throw createError({
                 statusCode: 404,
@@ -23,6 +24,7 @@ export default defineEventHandler( async event => {
             })
         }
 
+        // 該project未上架
         if( !project.state ) {
             throw createError({
                 statusCode: 403,
@@ -30,13 +32,17 @@ export default defineEventHandler( async event => {
             })
         }
 
+        // project.type的id轉為文字
         project.type = project.type.map( typeId => {
             const type = projectType.find( ({ id }) => id === typeId )
             return type ? type.text : typeId
         })
 
+        // 排序projects
         projects.sort( ( a , b ) => a.date < b.date ? 1 : -1 )
+        // 前五筆
         projects.splice( 5 )
+        // 只取得第一張封面
         projects.forEach( data => data.imgs = data.imgs.filter( ({ page }) => page === 0 ) )
 
         return {

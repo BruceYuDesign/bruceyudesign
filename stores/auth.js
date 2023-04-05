@@ -9,7 +9,7 @@ export const useAuthStore = defineStore( 'auth' , {
     },
     actions: {
         async fetchAuth() {
-            const { data: auth , error } = await useFetch( '/api/admin/' , { method: 'POST' } )
+            const { data: auth , error } = await useFetch( '/api/admin/auth/' , { method: 'POST' } )
             if( error.value ) {
                 throw createError( error.value )
             }

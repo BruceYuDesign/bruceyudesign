@@ -61,8 +61,10 @@ export default eventHandler( async event => {
 
     // access 驗證 --------------------------------------------------
     if(
-        event.path === '/api/admin/' ||
-        event.path === '/api/admin/profile/'
+        event.path === '/api/admin/'         ||
+        event.path === '/api/admin/auth/'    ||
+        event.path === '/api/admin/profile/' ||
+        event.path === '/api/admin/logout/'
     ) {
         return
     }

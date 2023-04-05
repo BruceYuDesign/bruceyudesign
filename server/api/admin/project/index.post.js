@@ -8,15 +8,19 @@ export default defineEventHandler( async event => {
     projectVerify( data )
 
     // 權限是否存在
-    for( let type of data.type ) {
-        await isExist( 'projectType' , type )
-    }
+    await Promise.all(
+        data.type.map( async type =>
+            await isExist( 'projectType' , type )
+        )
+    )
 
     // 新增圖片
-    for( let img of data.imgs ) {
-        let projectImgSrc = await addImage( img.src , 'project' )
-        img.src = projectImgSrc
-    }
+    await Promise.all(
+        data.imgs.map( async img => {
+            const projectImgSrc = await addImage( img.src , 'project' )
+            img.src = projectImgSrc
+        })
+    )
 
     // 新增資料
     return addData( 'project' , {

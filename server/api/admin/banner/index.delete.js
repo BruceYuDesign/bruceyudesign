@@ -7,8 +7,8 @@ export default defineEventHandler( async event => {
     await resetSort( 'banner' , 'index' , id )
 
     // 刪除圖片
-    const { img: bannerImgSrc } = await getData( 'banner' , id , [ 'img' ] )
-    await deleteImage( bannerImgSrc )
+    const { img } = await getData( 'banner' , id , [ 'img' ] )
+    await deleteImage( img )
 
     // 刪除資料
     return deleteData( 'banner' , id )

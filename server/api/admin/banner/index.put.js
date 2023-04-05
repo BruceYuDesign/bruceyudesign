@@ -8,9 +8,9 @@ export default defineEventHandler( async event => {
     bannerVerify( data )
 
     // 刪除舊圖片
-    const { img: bannerImgSrc } = await getData( 'banner' , id , [ 'img' ] )
-    if( data.img !== bannerImgSrc ) {
-        await deleteImage( bannerImgSrc )
+    const { img: oldBannerImgSrc } = await getData( 'banner' , id , [ 'img' ] )
+    if( data.img !== oldBannerImgSrc ) {
+        await deleteImage( oldBannerImgSrc )
     }
 
     // 更新圖片

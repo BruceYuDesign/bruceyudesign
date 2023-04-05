@@ -3,7 +3,11 @@ import { userAccessVerify } from '~~/verify/userAccess'
 
 export default defineEventHandler( async event => {
     const { data } = await readBody( event )
+
+    // 資料驗證
     userAccessVerify( data )
+
+    // 新增資料
     return addData( 'userAccess' , {
         name: data.name,
         desc: data.desc,

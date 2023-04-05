@@ -7,9 +7,9 @@ export default defineEventHandler( async event => {
     const uid = __session.uid
     const { data } = await readBody( event )
 
+    // 資料驗證
     profilePasswordVerify( data )
-    const oldPassword = data.old
-    const newPassword = data.new
+    const { old: oldPassword , new: newPassword } = data
 
     // 驗證密碼
     const user = await getData( 'user' , uid , [ 'password' ] )
