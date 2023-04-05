@@ -42,7 +42,7 @@
                 </g>
             </svg>
             <span class="absolute font-bold text-lg text-slate-300 bottom-24">
-                v4.3.0
+                {{ 'v' + useRuntimeConfig().public.version }}
             </span>
         </div>
     </Transition>

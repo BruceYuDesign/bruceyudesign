@@ -1,5 +1,12 @@
+import { version } from './package.json'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    runtimeConfig: {
+        public: {
+            version
+        }
+    },
     ssr: true,
     modules: [
         'nuxt-lodash',
