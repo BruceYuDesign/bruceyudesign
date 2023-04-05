@@ -25,7 +25,7 @@
 </template>
 
 <script>
-    const API_PATH = '/api/admin/profile/'
+    const API_PATH = '/api/admin/logout/'
     export default {
         props: {
             modalName: String
