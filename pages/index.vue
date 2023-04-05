@@ -257,24 +257,30 @@
     </BrandedContainer>
 </template>
 
+<script setup>
+    const { data } = await useFetch( '/api/branded/' )
+    const {
+        banners,
+        bannerOption,
+        projects
+    } = data.value
+
+    useHead({
+        title: 'BRUCE YU DESIGN',
+        meta: [
+            { name: 'description' , content: '' },
+            { name: 'og:title' , content: '' },
+            { name: 'og:description' , content: '' },
+            { name: 'og:image' , content: '' }
+        ]
+    })
+</script>
+
 <script>
     import 'microtip/microtip.css'
     import emailjs from '@emailjs/browser'
     import { contactVerify } from '~/verify/contact'
     export default {
-        async setup() {
-            const { data } = await useFetch( '/api/branded/' )
-            const {
-                banners,
-                bannerOption,
-                projects
-            } = data.value
-            return {
-                banners,
-                bannerOption,
-                projects
-            }
-        },
         data() {
             return {
                 contact: {

@@ -35,6 +35,15 @@
     <AdminLoading/>
 </template>
 
+<script setup>
+    useHead({
+        title: '管理系統',
+        meta: [
+            { name: 'robots' , content: 'noindex, nofollow' }
+        ]
+    })
+</script>
+
 <script>
     import { useLoadStore } from '~/stores/isLoading'
     import { loginVerify } from '~/verify/login'

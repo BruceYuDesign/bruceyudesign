@@ -91,14 +91,22 @@
     </BrandedContainer>
 </template>
 
+<script setup>
+    const { data: projectTypes } = await useFetch( '/api/branded/projectType/' )
+
+    useHead({
+        title: '更多專案',
+        meta: [
+            { name: 'description' , content: '' },
+            { name: 'og:title' , content: '' },
+            { name: 'og:description' , content: '' },
+            { name: 'og:image' , content: '' }
+        ]
+    })
+</script>
+
 <script>
     export default {
-        async setup() {
-            const { data } = await useFetch( '/api/branded/projectType/' )
-            return {
-                projectTypes: data.value
-            }
-        },
         data() {
             return {
                 isLoading: true,
@@ -112,7 +120,7 @@
         },
         watch: {
             '$route.query': function( newValue ) {
-                if( !newValue.type && !newValue.page ) return
+                if( !newValue.type && !newValue.page ) { return }
                 this.getData()
                 window.scrollTo( 0 , 0 )
             }

@@ -35,7 +35,8 @@ export default defineNuxtConfig({
             title: 'BRUCE YU DESIGN',
             meta: [
                 { charset: 'utf-8' },
-                { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+                { name: 'viewport' , content: 'width=device-width, initial-scale=1' },
+                { name: 'copyright' , content: `Copyright ${ new Date().getFullYear() } ©BRUCE YU DESIGN All Rights Reserved.` }
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }

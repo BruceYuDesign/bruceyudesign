@@ -64,16 +64,20 @@
     </BrandedContainer>
 </template>
 
-<script>
-    export default {
-        async setup() {
-            const { id } = useRoute().params
-            const { data , error } = await useFetch( `/api/branded/project/${ id }` )
-            if( error.value ) {
-                return showError( error.value )
-            }
-            const { project , projects } = data.value
-            return { project , projects }
-        }
-    }
+<script setup>
+    const { id } = useRoute().params
+    const { data , error } = await useFetch( `/api/branded/project/${ id }` )
+    error.value && showError( error.value )
+
+    const { project , projects } = data.value
+
+    useHead({
+        title: '專案｜' + project.title,
+        meta: [
+            { name: 'description' , content: project.desc },
+            { name: 'og:title' , content: '專案｜' + project.title },
+            { name: 'og:description' , content: project.desc },
+            { name: 'og:image' , content: project.imgs[ 0 ].src }
+        ]
+    })
 </script>

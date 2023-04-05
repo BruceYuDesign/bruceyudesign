@@ -57,7 +57,7 @@ bruceyudesign
 - [ ] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error page
 - [x] 各行動裝置及瀏覽器的css相容性處理
 - [ ] 改用後端套件發送email，目前emailjs暴露key在前端
-- [ ] 處理前台SEO
+- [ ] 處理前台SEO（2023/04/05處理好meta配置）
 
 ## 前台形象網站
 [https://bruceyudesign.com](https://bruceyudesign.com)

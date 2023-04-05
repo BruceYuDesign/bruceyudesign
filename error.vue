@@ -23,7 +23,20 @@
     const props = defineProps({
         error: Object
     })
+
     const handleError = () => {
-        window.location = '/login/'
+        if( window.location.pathname.startsWith( '/admin/' ) ) {
+            window.location = '/login/'
+        }
+        else {
+            window.location = '/'
+        }
     }
+
+    useHead({
+        title: '錯誤',
+        meta: [
+            { name: 'robots' , content: 'noindex, nofollow' }
+        ]
+    })
 </script>

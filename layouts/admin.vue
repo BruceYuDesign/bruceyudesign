@@ -12,3 +12,12 @@
         <Welcom/>
     </div>
 </template>
+
+<script setup>
+    useHead({
+        title: '管理系統',
+        meta: [
+            { name: 'robots' , content: 'noindex, nofollow' }
+        ]
+    })
+</script>
