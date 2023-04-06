@@ -10,7 +10,7 @@ export function gradientAnimate({
         startColor: startColor2,
         endColor: endColor2
     },
-    bindColor: callback
+    bindColor: bindColor
 }) {
     let counter = 1
     let limit = duration / 25
@@ -41,7 +41,7 @@ export function gradientAnimate({
     // 變換顏色
     const translate = () => {
         if ( counter <= limit ) {
-            callback(
+            bindColor(
                 color( startColor1 , startColor2 ),
                 color( endColor1   , endColor2   )
             )
