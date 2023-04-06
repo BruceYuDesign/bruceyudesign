@@ -7,6 +7,21 @@ export const useAuthStore = defineStore( 'auth' , {
             }
         }
     },
+    getters: {
+        useAccess: state => {
+            return path => state.auth.access[ path ]
+        },
+        canAccessPage: state => {
+            return path => {
+                if( !state.auth.access[ path ].get ) {
+                    throw showError({
+                        statusCode: 403,
+                        statusMessage: 'Forbidden'
+                    })
+                }
+            }
+        }
+    },
     actions: {
         async fetchAuth() {
             const { data: auth , error } = await useFetch( '/api/admin/auth/' , { method: 'POST' } )
@@ -14,17 +29,6 @@ export const useAuthStore = defineStore( 'auth' , {
                 throw createError( error.value )
             }
             this.auth = auth
-        },
-        useAccess( path ) {
-            return this.auth.access[ path ]
-        },
-        canAccessPage( path ) {
-            if( !this.auth.access[ path ].get ) {
-                throw showError({
-                    statusCode: 403,
-                    statusMessage: 'Forbidden'
-                })
-            }
         }
     }
 })
