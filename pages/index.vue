@@ -238,14 +238,14 @@
                     hover:bg-primary
                     sm:col-span-2"
                     @click=" sendEmail "
-                    :disabled=" isLoading "
+                    :disabled=" contactIsLoading "
                     type="button"
                     >
-                    <span v-if=" !isLoading "
+                    <span v-if=" !contactIsLoading "
                         class="text-white">                  
                         送出
                     </span>
-                    <svg v-if=" isLoading "
+                    <svg v-if=" contactIsLoading "
                         class="h-6 w-6 fill-white animate-spin"
                         viewBox="0 0 50 50"
                         >
@@ -280,6 +280,7 @@
     import 'microtip/microtip.css'
     import emailjs from '@emailjs/browser'
     import { contactVerify } from '~/verify/contact'
+    import { usePopupStore } from '~/stores/popup'
     export default {
         data() {
             return {
@@ -290,20 +291,14 @@
                     email:   '',
                     detail:  ''
                 },
-                isLoading: false
+                contactIsLoading: false
             }
         },
         methods: {
             async sendEmail() {
-                // <!-- ! 待優化，先使用前端emailjs套件（使用後端套件要錢） -->
-                // await this.$fetchData( '/api/branded/contact/' , {
-                //     method: 'POST',
-                //     body: {
-                //         data: data
-                //     }
-                // })
+                const { setPopup } = usePopupStore()
                 const { data } = contactVerify( this.contact )
-                this.isLoading = true
+                this.contactIsLoading = true
                 emailjs.send( 'service_j5bpzhy' , 'template_uq3szmn' , data , '48hEci00blM8bCx6h' )
                     .then( response => {
                         this.contact = {
@@ -313,12 +308,13 @@
                             email:   '',
                             detail:  ''
                         }
+                        setPopup( 'email發送成功' , 'success' )
                     })
                     .catch( error => {
-                        throw createError( error )
+                        setPopup( 'email發送失敗' , 'danger' )
                     })
                     .finally( () => {
-                        this.isLoading = false
+                        this.contactIsLoading = false
                     })
             }
         }

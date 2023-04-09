@@ -25,7 +25,8 @@ import {
     faClipboardCheck,
     faCircleChevronLeft,
     faCircleChevronRight,
-    faLink
+    faLink,
+    faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 
 export default defineNuxtPlugin( ( nuxtApp ) => {
@@ -54,7 +55,8 @@ export default defineNuxtPlugin( ( nuxtApp ) => {
         faClipboardCheck,
         faCircleChevronLeft,
         faCircleChevronRight,
-        faLink
+        faLink,
+        faCircleXmark
     )
     config.autoAddCss = false
     nuxtApp.vueApp.component( 'FontAwesomeIcon' , FontAwesomeIcon , {} )

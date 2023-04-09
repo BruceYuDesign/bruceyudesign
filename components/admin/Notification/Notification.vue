@@ -41,18 +41,17 @@
             }
         },
         created() {
-            const type = this.$props.type
-            switch( true ) {
-                case type === 'primary':
+            switch( this.$props.type ) {
+                case 'primary':
                     this.setColor = 'notification-primary'
                     break
-                case type === 'success':
+                case 'success':
                     this.setColor = 'notification-success'
                     break
-                case type === 'warning':
+                case 'warning':
                     this.setColor = 'notification-warning'
                     break
-                case type === 'danger':
+                case 'danger':
                     this.setColor = 'notification-danger'
                     break
             }

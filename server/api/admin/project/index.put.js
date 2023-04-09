@@ -16,8 +16,8 @@ export default defineEventHandler( async event => {
     const { imgs: oldProjectImgs } = await getData( 'project' , id , [ 'imgs' ] )
     await Promise.all(
         oldProjectImgs.map( async ({ src: oldImgSrc }) => {
-            const isExist = data.imgs.some( ({ src: newImgSrc }) => oldImgSrc === newImgSrc )
-            isExist || await deleteImage( oldImgSrc )
+            const imageIsExist = data.imgs.some( ({ src: newImgSrc }) => oldImgSrc === newImgSrc )
+            imageIsExist || await deleteImage( oldImgSrc )
         })
     )
 
