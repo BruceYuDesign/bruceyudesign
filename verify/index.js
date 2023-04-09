@@ -30,8 +30,10 @@ export function verify( data , form = [] ) {
 
     // 驗證錯誤
     if( process.client ) {
-        alert( errorText )
-        throw new Error( errorText )
+        throw createError({
+            statusCode: 400,
+            statusMessage: errorText
+        })
     }
     else {
         throw createError({

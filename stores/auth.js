@@ -13,12 +13,11 @@ export const useAuthStore = defineStore( 'auth' , {
         },
         canAccessPage: state => {
             return path => {
-                if( !state.auth.access[ path ].get ) {
-                    throw showError({
-                        statusCode: 403,
-                        statusMessage: 'Forbidden'
-                    })
-                }
+                if( state.auth.access[ path ].get ) { return }
+                throw showError({
+                    statusCode: 403,
+                    statusMessage: '無此權限，請重新登入'
+                })
             }
         }
     },

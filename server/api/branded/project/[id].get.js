@@ -1,4 +1,5 @@
 import { getData , getDatas } from '~/server/db'
+import { httpStatusCodes } from '~/server/httpStatusCodes'
 
 export default defineEventHandler( async event => {
     const { id } = event.context.params
@@ -18,18 +19,12 @@ export default defineEventHandler( async event => {
 
         // 未有該project
         if( !project ) {
-            throw createError({
-                statusCode: 404,
-                statusMessage: 'Not Found'
-            })
+            throw createError( httpStatusCodes.NOT_FOUND )
         }
 
         // 該project未上架
         if( !project.state ) {
-            throw createError({
-                statusCode: 403,
-                statusMessage: 'Forbidden'
-            })
+            throw createError( httpStatusCodes.FORBIDDEN )
         }
 
         // project.type的id轉為文字

@@ -1,4 +1,5 @@
 import { getData } from '~/server/db'
+import { httpStatusCodes } from '~/server/httpStatusCodes'
 import bcrypt from 'bcrypt'
 
 export default eventHandler( async event => {
@@ -10,13 +11,19 @@ export default eventHandler( async event => {
     // 尚未登入 --------------------------------------------------
     const __session = getCookie( event , '__session' )
     if( !__session ) {
-        throw createError({
-            statusCode: 401,
-            statusMessage: 'Unauthorized'
-        })
+        throw createError( httpStatusCodes.UNAUTHORIZED )
     }
 
-    const parseSession = JSON.parse( __session )
+    // 解析Session --------------------------------------------------
+    let parseSession
+    try {
+        parseSession = JSON.parse( __session )
+    }
+    // 無效Session
+    catch {
+        throw createError( httpStatusCodes.INVALID_SESSION )
+    }
+
     const cookieToken = parseSession.token
     const cookieUid   = parseSession.uid
 
@@ -28,10 +35,7 @@ export default eventHandler( async event => {
     }
     catch {
         deleteCookie( event , '__session' )
-        throw createError({
-            statusCode: 401,
-            statusMessage: 'Invalid UID'
-        })
+        throw createError( httpStatusCodes.INVALID_UID )
     }
 
     // state 驗證 --------------------------------------------------
@@ -39,10 +43,7 @@ export default eventHandler( async event => {
     // 帳號被停用
     if( !state ) {
         deleteCookie( event , '__session' )
-        throw createError({
-            statusCode: 403,
-            statusMessage: 'Forbidden'
-        })
+        throw createError( httpStatusCodes.ACCOUNT_DISABLED )
     }
 
     // token 驗證 --------------------------------------------------
@@ -53,29 +54,25 @@ export default eventHandler( async event => {
     // token 錯誤
     if( !isTokenValid || !isNotExpired ) {
         deleteCookie( event , '__session' )
-        throw createError({
-            statusCode: 401,
-            statusMessage: 'Token expired'
-        })
+        throw createError( httpStatusCodes.TOKEN_EXPIRED )
     }
 
     // access 驗證 --------------------------------------------------
-    if(
-        event.path === '/api/admin/'         ||
-        event.path === '/api/admin/auth/'    ||
-        event.path === '/api/admin/profile/' ||
-        event.path === '/api/admin/logout/'
-    ) {
+    const ADMIN_PATHS = [
+        '/api/admin/',
+        '/api/admin/auth/',
+        '/api/admin/profile/',
+        '/api/admin/logout/'
+    ]
+    if( ADMIN_PATHS.includes( event.path ) ) {
         return
     }
+
     const apiPath = event.path.match( /\/api\/admin\/(\w+)\// )[ 1 ]
     const apiMethod = event.node.req.method.toLowerCase()
     // access 不足
     if( !access[ apiPath ][ apiMethod ] ) {
         deleteCookie( event , '__session' )
-        throw createError({
-            statusCode: 403,
-            statusMessage: 'Forbidden'
-        })
+        throw createError( httpStatusCodes.FORBIDDEN )
     }
 })

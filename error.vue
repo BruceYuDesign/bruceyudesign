@@ -25,12 +25,14 @@
     })
 
     const handleError = () => {
-        if( window.location.pathname.startsWith( '/admin/' ) ) {
+        if(
+            window.location.pathname.startsWith( '/admin/' ) ||
+            window.location === '/login/'
+        ) {
             window.location = '/login/'
+            return
         }
-        else {
-            window.location = '/'
-        }
+        window.location = '/'
     }
 
     useHead({

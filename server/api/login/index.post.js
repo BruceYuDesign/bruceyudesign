@@ -1,4 +1,5 @@
 import { v4 as createToken } from 'uuid'
+import { httpStatusCodes } from '~/server/httpStatusCodes'
 import { getDatas , updateData } from '~/server/db'
 import bcrypt from 'bcrypt'
 
@@ -12,10 +13,7 @@ export default defineEventHandler( async event => {
 
     // 無此帳號
     if( snapshot.length === 0 ) {
-        throw createError({
-            statusCode: 401,
-            statusMessage: 'Invalid account'
-        })
+        throw createError( httpStatusCodes.INVALID_ACCOUNT )
     }
 
     // 驗證密碼
@@ -24,19 +22,13 @@ export default defineEventHandler( async event => {
 
     // 密碼錯誤
     if( !isVerify ) {
-        throw createError({
-            statusCode: 401,
-            statusMessage: 'Password error'
-        })
+        throw createError( httpStatusCodes.PASSWORD_ERROR )
     }
 
     // 帳號被停用
     const isEnable = user.state
     if( !isEnable ) {
-        throw createError({
-            statusCode: 403,
-            statusMessage: 'Account disabled'
-        })
+        throw createError( httpStatusCodes.ACCOUNT_DISABLED )
     }
 
     // 產生token

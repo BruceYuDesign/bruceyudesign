@@ -1,4 +1,5 @@
 import { v4 as uuid } from 'uuid'
+import { httpStatusCodes } from '~/server/httpStatusCodes'
 import firebase from 'firebase-admin'
 import serviceAccount from './bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json'
 
@@ -48,10 +49,7 @@ export const getData = async ( collection , id , select = [] ) => {
         }
     }
     catch( error ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: `Error fetching ${ collection }: ${ doc } from Firestore`
-        })
+        throw createError( httpStatusCodes.DATABASE_ERROR )
     }
 }
 
@@ -65,7 +63,6 @@ export const getData = async ( collection , id , select = [] ) => {
  * @returns { Array } 多筆資料
  * --------------------------------------------------
  */
-// , orderBy = null , limit = null
 export const getDatas = async ( collection , select = [] , filters = {} ) => {
     try {
         let query = db.collection( collection ).select( ...select )
@@ -80,10 +77,7 @@ export const getDatas = async ( collection , select = [] , filters = {} ) => {
         return datas
     }
     catch( error ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: `Error fetching ${ collection } from Firestore`
-        })
+        throw createError( httpStatusCodes.DATABASE_ERROR )
     }
 }
 
@@ -102,10 +96,7 @@ export const updateData = async ( collection , id , data ) => {
         return 'SUCCESS'
     }
     catch( error ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: `Error fetching ${ collection }: ${ id } from Firestore`
-        })
+        throw createError( httpStatusCodes.DATABASE_ERROR )
     }
 }
 
@@ -123,10 +114,7 @@ export const addData = async ( collection , data ) => {
         return 'SUCCESS'
     }
     catch( error ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: `Error fetching ${ collection } from Firestore`
-        })
+        throw createError( httpStatusCodes.DATABASE_ERROR )
     }
 }
 
@@ -144,10 +132,7 @@ export const deleteData = async ( collection , id ) => {
         return 'SUCCESS'
     }
     catch( error ) {
-        throw createError({
-            statusCode: 500,
-            statusMessage: `Error fetching ${ collection }: ${ id } from Firestore`
-        })
+        throw createError( httpStatusCodes.DATABASE_ERROR )
     }
 }
 
@@ -169,10 +154,7 @@ export const isUnique = async ( collection , field , value , excludeId ) => {
         snapshot.length > 0 &&
         snapshot[ 0 ].id !== excludeId
     ) {
-        throw createError({
-            statusCode: 409,
-            statusMessage: 'Overlapped data'
-        })
+        throw createError( httpStatusCodes.OVERLAPPED_DATA )
     }
 }
 
@@ -185,12 +167,9 @@ export const isUnique = async ( collection , field , value , excludeId ) => {
  * --------------------------------------------------
  */
 export const isExist = async ( collection , id ) => {
-    const snapshot = await getData( collection , id )
-    if( !snapshot ) {
-        throw createError({
-            statusCode: 404,
-            statusMessage: 'Not found'
-        })
+    const snapshot = await db.collection( collection ).doc( id ).get()
+    if( !snapshot.exists ) {
+        throw createError( httpStatusCodes.NOT_FOUND )
     }
 }
 
