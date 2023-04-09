@@ -55,12 +55,12 @@ bruceyudesign
 ## 待優化項目：
 - [x] 使用 storage 存放圖片，目前使用 base64 存在 firestore
 - [x] 各行動裝置及瀏覽器的 css 相容性處理
+- [x] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error page
+- [x] 新增`<Popup/>`
 - [ ] 前台首頁新增`<h1></h1>`標籤
 - [ ] 前台首頁新增`particles.js`效果
 - [ ] 前台程式碼模組化、優化
 - [ ] 更多專案頁面的頁碼防呆（沒有 query 時要防呆）
-- [ ] 針對不同的錯誤，進行相對應的處理，目前所有錯誤都會導向至error page
-- [ ] 新增`<Popup/>`
 - [ ] 新增`<Confirm/>`
 - [ ] email 改為後端發送，目前前端 email 套件暴露 key
 
