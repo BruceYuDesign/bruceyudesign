@@ -1,6 +1,6 @@
 {
     "private": true,
-    "version": "4.4.0",
+    "version": "4.4.1",
     "scripts": {
         "build": "nuxt build && node ./firebaseEnv",
         "dev": "nuxt dev",
