@@ -66,15 +66,16 @@ function successHandler(url, options) {
     }
 
     // 後台操作
-    if( !url.startsWith( '/api/admin/' ) ) { return }
-    const methodMap = {
-        POST:   '已成功新增',
-        PUT:    '已成功更新',
-        PATCH:  '已成功更新',
-        DELETE: '已成功刪除'
+    if( !url.startsWith( '/api/admin/' ) ) {
+        const methodMap = {
+            POST:   '已成功新增',
+            PUT:    '已成功更新',
+            PATCH:  '已成功更新',
+            DELETE: '已成功刪除'
+        }
+        const message = methodMap[ method ]
+        setPopup( message , 'success' )
     }
-    const message = methodMap[ method ]
-    setPopup( message , 'success' )
 }
 
 // fetch包裝 --------------------------------------------------
