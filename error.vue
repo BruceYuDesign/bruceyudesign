@@ -27,7 +27,7 @@
     const handleError = () => {
         if(
             window.location.pathname.startsWith( '/admin/' ) ||
-            window.location === '/login/'
+            window.location.pathname === '/login/'
         ) {
             window.location = '/login/'
             return
