@@ -46,7 +46,7 @@ function errorHandler( error ) {
 }
 
 // 成功處理 --------------------------------------------------
-function successHandler(url, options) {
+function successHandler( url , options ) {
     const { setPopup } = usePopupStore()
 
     // 沒有設定 options
