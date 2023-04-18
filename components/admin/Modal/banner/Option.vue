@@ -52,9 +52,9 @@
             }
         },
         watch: {
-            modalName: function() {
-                if( this.$props.modalName === 'Option' ) {
-                    this.bannerOption = _cloneDeep( this.$props.modalBannerOption )
+            modalName: {
+                handler( newValue ) {
+                    this.bannerOption = newValue && { ...this.$props.modalBannerOption }
                 }
             }
         },

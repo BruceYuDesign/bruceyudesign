@@ -36,38 +36,30 @@
 
 <script>
     export default {
-    methods: {
-        title() {
-            const route = this.$route.path;
-            switch (true) {
-                case route === "/admin/":
-                    return "首頁";
-                case route === "/admin/profile/":
-                    return "個人資料";
-                case route === "/admin/user-access/":
-                    return "帳號權限設定";
-                case route === "/admin/user/":
-                    return "帳號管理";
-                case route === "/admin/banner/":
-                    return "廣告管理";
-                case route === "/admin/project-type/":
-                    return "專案類別設定";
-                case route === "/admin/project/":
-                    return "專案管理";
-                default:
-                    return "BRUCE YU DESIGN";
+        methods: {
+            title() {
+                const pathList = {
+                    '/admin/':              '首頁',
+                    '/admin/profile/':      '個人資料',
+                    '/admin/user-access/':  '帳號權限設定',
+                    '/admin/user/':         '帳號管理',
+                    '/admin/banner/':       '廣告管理',
+                    '/admin/project-type/': '專案類別設定',
+                    '/admin/project/':      '專案管理'
+                }
+                const path = this.$route.path
+                return pathList[ path ]
+            },
+            openNavbar() {
+                document.getElementById( 'navbar' ).classList.add( 'navbar-open' )
+                document.getElementById( 'overlay' ).classList.add( 'overlay-show' )
+            },
+            closeNavbar() {
+                document.getElementById( 'navbar' ).classList.remove( 'navbar-open' )
+                document.getElementById( 'overlay' ).classList.remove( 'overlay-show' )
             }
-        },
-        openNavbar() {
-            document.getElementById( 'navbar' ).classList.add( 'navbar-open' )
-            document.getElementById( 'overlay' ).classList.add( 'overlay-show' )
-        },
-        closeNavbar() {
-            document.getElementById( 'navbar' ).classList.remove( 'navbar-open' )
-            document.getElementById( 'overlay' ).classList.remove( 'overlay-show' )
         }
     }
-}
 </script>
 
 <style scoped>

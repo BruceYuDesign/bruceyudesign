@@ -114,9 +114,11 @@
             }
         },
         watch: {
-            modelValue: function( newValue , oldValue ) {
-                if( newValue.length !== oldValue.length ) {
-                    this.memory = _cloneDeep( newValue )
+            modelValue: {
+                handler( newValue , oldValue ) {
+                    if( newValue.length !== oldValue.length ) {
+                        this.memory = _cloneDeep( newValue )
+                    }
                 }
             }
         },

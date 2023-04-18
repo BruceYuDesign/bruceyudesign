@@ -148,12 +148,11 @@
             }
         },
         watch: {
-            modalName: function() {
-                if( this.$props.modalName === 'Create' ) {
-                    this.project = _cloneDeep( this.default )
-                }
-                else if( this.$props.modalName === 'Update' ) {
-                    this.project = _cloneDeep( this.$props.modalProject )
+            modalName: {
+                handler( newValue ) {
+                    this.project = newValue === 'Update' ?
+                        _cloneDeep( this.$props.modalProject ) :
+                        _cloneDeep( this.default )
                 }
             }
         },

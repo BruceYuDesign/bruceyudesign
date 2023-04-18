@@ -81,6 +81,7 @@
 
 <script>
     import { bannerVerify } from '~/verify/banner'
+    const API_PATH = '/api/admin/banner/'
     export default {
         props: {
             modalName:      String,
@@ -102,12 +103,11 @@
             }
         },
         watch: {
-            modalName: function() {
-                if( this.$props.modalName === 'Create' ) {
-                    this.banner = _cloneDeep( this.default )
-                }
-                else if( this.$props.modalName === 'Update' ) {
-                    this.banner = _cloneDeep( this.$props.modalBanner )
+            modalName: {
+                handler( newValue ) {
+                    this.banner = newValue === 'Update' ?
+                        _cloneDeep( this.$props.modalBanner ) :
+                        _cloneDeep( this.default )
                 }
             }
         },
@@ -119,7 +119,7 @@
             },
             async addBanner() {
                 const { data } = bannerVerify( this.banner )
-                await this.$fetchData( '/api/admin/banner/' , {
+                await this.$fetchData( API_PATH , {
                     method: 'POST',
                     body: {
                         data: data
@@ -130,7 +130,7 @@
             },
             async updateBanner() {
                 const { data } = bannerVerify( this.banner )
-                await this.$fetchData( '/api/admin/banner/' , {
+                await this.$fetchData( API_PATH , {
                     method: 'PUT',
                     body: {
                         id: this.banner.id,
@@ -141,7 +141,7 @@
                 this.$props.modalResetData()
             },
             async deleteBanner() {
-                await this.$fetchData( '/api/admin/banner/' , {
+                await this.$fetchData( API_PATH , {
                     method: 'DELETE',
                     body: {
                         id: this.banner.id

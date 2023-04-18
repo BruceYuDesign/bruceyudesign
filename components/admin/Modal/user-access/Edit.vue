@@ -235,12 +235,11 @@
             }
         },
         watch: {
-            modalName: function() {
-                if( this.$props.modalName === 'Create' ) {
-                    this.userAccess = _cloneDeep( this.default )
-                }
-                else if( this.$props.modalName === 'Update' ) {
-                    this.userAccess = _cloneDeep( this.$props.modalUserAccess )
+            modalName: {
+                handler( newValue ) {
+                    this.userAccess = newValue === 'Update' ?
+                        _cloneDeep( this.$props.modalUserAccess ) :
+                        _cloneDeep( this.default )
                 }
             }
         },

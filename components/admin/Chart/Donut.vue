@@ -33,10 +33,12 @@
             }
         },
         watch: {
-            chartLabels: function( newValue ) {
-                if( newValue.length > 0 ) {
-                    this.options.labels = _clone( this.$props.chartLabels )
-                    this.series = _clone( this.$props.chartSeries )
+            chartLabels: {
+                handler( newValue ) {
+                    if( newValue.length > 0 ) {
+                        this.options.labels = [ ...this.$props.chartLabels ]
+                        this.series = [ ...this.$props.chartSeries ]
+                    }
                 }
             }
         },
