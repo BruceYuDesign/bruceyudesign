@@ -4,7 +4,6 @@ import { usePopupStore } from '~/stores/popup'
 // 錯誤處理 --------------------------------------------------
 function errorHandler( error ) {
     const { statusMessage , statusCode } = error
-
     const errorMap = {
         'Bad request':      '資料錯誤',
         'Unauthorized':     '尚未登入',
@@ -66,7 +65,7 @@ function successHandler( url , options ) {
     }
 
     // 後台操作
-    if( !url.startsWith( '/api/admin/' ) ) {
+    if( url.startsWith( '/api/admin/' ) ) {
         const methodMap = {
             POST:   '已成功新增',
             PUT:    '已成功更新',
