@@ -44,6 +44,13 @@
                 />
         </template>
     </AdminModalBasic>
+    <AdminConfirm
+        ref="confirm"
+        type="danger"
+        font-awesome-icon="fa-solid fa-trash-can"
+        message="確認要刪除嗎？"
+        resolve-text="確認刪除"
+        />
 </template>
 
 <script setup>
@@ -108,14 +115,18 @@
                 this.$props.modalResetData()
             },
             async deleteProjectType() {
-                await this.$fetchData( API_PATH , {
-                    method: 'DELETE',
-                    body: {
-                        id: this.projectType.id
-                    }
-                })
-                this.closeModal()
-                this.$props.modalResetData()
+                try {
+                    await this.$refs.confirm.showConfirm()
+                    await this.$fetchData( API_PATH , {
+                        method: 'DELETE',
+                        body: {
+                            id: this.projectType.id
+                        }
+                    })
+                    this.closeModal()
+                    this.$props.modalResetData()
+                }
+                catch {}
             }
         }
     }

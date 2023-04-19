@@ -50,7 +50,7 @@
                 text="登出"
                 type="danger"
                 v-show=" mode === 'Preview' "
-                @click=" modalAskLogout "
+                @click=" handleLogout "
                 />
             <AdminFormButton
                 text="取消"
@@ -69,15 +69,18 @@
     <AdminModalProfilePassword
         v-model:modal-name=" modal.name "
         />
-    <AdminModalProfileLogout
-        v-model:modal-name=" modal.name "
+    <AdminConfirm
+        ref="confirm"
+        type="danger"
+        font-awesome-icon="fa-solid fa-user"
+        message="確認要登出嗎？"
+        resolve-text="確認登出"
         />
 </template>
 
 <script>
     import { useAuthStore } from '~/stores/auth'
     import { profileVerify } from '~/verify/profile'
-    const API_PATH = '/api/admin/profile/'
     export default {
         data() {
             return{
@@ -97,9 +100,6 @@
             modalEditPassword() {
                 this.modal.name = 'Password'
             },
-            modalAskLogout() {
-                this.modal.name = 'Logout'
-            },
             editProfile() {
                 this.mode = 'Edit'
             },
@@ -109,7 +109,7 @@
             },
             async saveProfile() {
                 const { data } = profileVerify( this.data.user )
-                await this.$fetchData( API_PATH , {
+                await this.$fetchData( '/api/admin/profile/' , {
                     method: 'PUT',
                     body: {
                         data: data
@@ -118,6 +118,16 @@
                 useAuthStore().auth.profile = _clone( this.data.user )
                 this.memory.user = _clone( this.data.user )
                 this.mode = 'Preview'
+            },
+            async handleLogout() {
+                try {
+                    await this.$refs.confirm.showConfirm()
+                    await this.$fetchData( '/api/admin/logout/' , {
+                        method: 'POST'
+                    })
+                    window.location = '/login/'
+                }
+                catch {}
             }
         }
     }

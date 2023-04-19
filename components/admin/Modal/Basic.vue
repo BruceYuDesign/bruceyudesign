@@ -19,7 +19,8 @@
                         </button>
                     </div>
                     <div class="modal-body"
-                        :class=" !canEditModal && 'pointer-events-none' ">
+                        :class=" !canEditModal && 'pointer-events-none' "
+                        >
                         <AdminNotification
                             v-if=" !canEditModal "
                             type="danger"
@@ -51,7 +52,7 @@
         },
         watch: {
             openModal: {
-                handler: function ( newValue ) {
+                handler: function( newValue ) {
                     document.body.style.overflow = newValue ? 'hidden' : 'overlay'
                 }
             }
@@ -59,7 +60,7 @@
         methods: {
             clickOverlay( event ) {
                 if( event.target.classList.contains( 'modal-mask' ) ) {
-                    let modal = document.querySelector( '.modal-container' )
+                    const modal = document.querySelector( '.modal-container' )
                     modal.style.transform = 'scale(1.03)'
                     setTimeout( () => {
                         modal.style.transform = 'scale(1)'
@@ -76,7 +77,7 @@
         @apply w-screen h-screen fixed top-0 right-0 bottom-0 left-0 grid place-items-start z-20;
     }
     .modal-mask {
-        @apply w-full min-h-full h-fit py-12 px-0 grid place-items-center bg-black/75
+        @apply w-full min-h-full h-fit pt-12 pb-20 px-0 grid place-items-center bg-black/75
         sm:py-16;
     }
     .modal-container {
