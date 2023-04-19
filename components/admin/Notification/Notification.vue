@@ -1,6 +1,6 @@
 <template>
     <span class="notification"
-        :class=" setColor ">
+        :class=" setNotificationColor() ">
         <ClientOnly>
             <FontAwesomeIcon
                 v-if=" type === 'primary' "
@@ -35,25 +35,9 @@
                 default: 'primary'
             }
         },
-        data() {
-            return {
-                setColor: '' 
-            }
-        },
-        created() {
-            switch( this.$props.type ) {
-                case 'primary':
-                    this.setColor = 'notification-primary'
-                    break
-                case 'success':
-                    this.setColor = 'notification-success'
-                    break
-                case 'warning':
-                    this.setColor = 'notification-warning'
-                    break
-                case 'danger':
-                    this.setColor = 'notification-danger'
-                    break
+        methods: {
+            setNotificationColor() {
+                return 'notification-' + this.$props.type
             }
         }
     }

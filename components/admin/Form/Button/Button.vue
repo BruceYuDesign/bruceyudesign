@@ -1,6 +1,6 @@
 <template>
     <button class="button"
-        :class=" setColor "
+        :class=" setButtonColor() "
         v-bind=" $attrs "
         type="button"
         >
@@ -21,28 +21,9 @@
                 default: 'primary'
             }
         },
-        data() {
-            return {
-                setColor: '' 
-            }
-        },
-        created() {
-            switch( this.$props.type ) {
-                case 'primary':
-                    this.setColor = 'button-primary'
-                    break
-                case 'success':
-                    this.setColor = 'button-success'
-                    break
-                case 'secondary':
-                    this.setColor = 'button-secondary'
-                    break
-                case 'warning':
-                    this.setColor = 'button-warning'
-                    break
-                case 'danger':
-                    this.setColor = 'button-danger'
-                    break
+        methods: {
+            setButtonColor() {
+                return 'button-' + this.$props.type
             }
         }
     }

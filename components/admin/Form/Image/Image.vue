@@ -84,10 +84,6 @@
                 type: [ String , Array ],
                 default: [ 'image/jpeg' ]
             },
-            changeImg: {
-                type: Function,
-                default: () => {}
-            },
             modelValue: {
                 type: String,
                 default: ''
@@ -96,24 +92,22 @@
         methods: {
             removeImg() {
                 this.$emit( 'update:modelValue' , '' )
-                this.$emit( 'changeImg' , '' )
             },
-            uploadImg( el ) {
+            uploadImg( event ) {
                 const { $ImageCompressor } = useNuxtApp()
                 new $ImageCompressor({
-                    file:     el.target.files[ 0 ],
+                    file:     event.target.files[ 0 ],
                     quality:  this.$props.compressQuality,
                     mimeType: this.$props.compressMimeType,
                     width:    this.$props.compressWidth,
                     height:   this.$props.compressHeight,
                     beforeDraw: () => {
-                        el.target.setAttribute( 'type' , 'text' )
+                        event.target.setAttribute( 'type' , 'text' )
                     },
                     success: result => {
-                        el.target.setAttribute( 'type' , 'file' )
+                        event.target.setAttribute( 'type' , 'file' )
                         $ImageCompressor.file2DataUrl( result , url => {
                             this.$emit( 'update:modelValue' , url )
-                            this.$emit( 'changeImg' , url )
                         })
                     }
                 })
