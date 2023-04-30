@@ -34,7 +34,7 @@ export default defineEventHandler( async event => {
     // 產生token
     const token = createToken()
     const tokenEncrypt = await bcrypt.hash( token , 10 )
-    const expires = new Date( Date.now() + 10000 * 60 * 60 * 24 * 1 )
+    const expires = new Date( Date.now() + 1000 * 60 * 60 * 24 * 1 )
     const option = {
         httpOnly: true,
         expires: expires,
