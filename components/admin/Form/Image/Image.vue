@@ -108,6 +108,7 @@
                         event.target.setAttribute( 'type' , 'file' )
                         $ImageCompressor.file2DataUrl( result , url => {
                             this.$emit( 'update:modelValue' , url )
+                            this.$emit( 'changeImg' , url )
                         })
                     }
                 })
