@@ -299,7 +299,7 @@
                 const { setPopup } = usePopupStore()
                 const { data } = contactVerify( this.contact )
                 this.contactIsLoading = true
-                emailjs.send( 'service_j5bpzhy' , 'template_uq3szmn' , data , '48hEci00blM8bCx6h' )
+                emailjs.send( 'service_c4yhyue' , 'template_uq3szmn' , data , '48hEci00blM8bCx6h' )
                     .then( response => {
                         this.contact = {
                             name:    '',

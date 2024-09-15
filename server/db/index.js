@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid'
 import { httpStatusCodes } from '~/server/httpStatusCodes'
 import firebase from 'firebase-admin'
-import serviceAccount from './bruce-yu-design-firebase-adminsdk-uurgd-cfe8c62358.json'
+import serviceAccount from './firebase-adminsdk.json'
 
 firebase.initializeApp( {
     credential: firebase.credential.cert( serviceAccount ),
@@ -17,7 +17,7 @@ const bucket = firebase.storage().bucket()
  * @function
  * @param { String } collection - 集合
  * @param { String } id         - 要取得的id
- * @param { Array  } select     - 回傳的欄位
+ * @param { Array } select     - 回傳的欄位
  * @returns { Object } 單筆資料
  * --------------------------------------------------
  */
@@ -58,7 +58,7 @@ export const getData = async ( collection , id , select = [] ) => {
  * 取得多筆資料：
  * @function
  * @param { String } collection - 集合
- * @param { Array  } select     - 回傳的欄位
+ * @param { Array } select     - 回傳的欄位
  * @param { Object } filters    - 篩選資料
  * @returns { Array } 多筆資料
  * --------------------------------------------------
